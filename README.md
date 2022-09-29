@@ -1,5 +1,5 @@
 <!--# My Personal Project-->
-# Study room scheduler app
+# **Study room scheduler app**
 
 ## What will the application do?
 * The application will help people schedule and book study rooms at the UBC ICCS building. Users can create, reschedule, delete their booking slots using this app.
@@ -11,11 +11,11 @@
 * I am interested in this project because I want to learn more about making scheduling apps and would like to implement the project in my student residence.
 
 ## User Stories
-* As a user, I want to be able to list all the available timeslots.
-* As a user, I want to be able to add my own booking study place to one of the available timeslots. 
-* As a user, I want to be able to reschedule the booking at the specified time.
-* As a user, I want to be able to delete the booking. 
-* As an admin user, I want to be able to delete an entire day of bookings due to holidays, etc.  
+* As a *user*, I want to be able to *list* all the available timeslots.
+* As a *user*, I want to be able to *add* my own booking study place to one of the available timeslots. 
+* As a *user*, I want to be able to *reschedule* the booking at the specified time.
+* As a *user*, I want to be able to *delete* the booking. 
+* As an *admin user*, I want to be able to *delete an entire day* of bookings due to holidays, etc.  
 <!-- A subtitle
 
 A *bulleted* list:
