@@ -33,6 +33,7 @@ public class Menu {
 
     // Effects: prints out menu options and redirects to suitable method based on user input
     private void startApp() {
+        printBanner();
         while (true) {
             printMenu();
             String userInput = in.nextLine();
@@ -178,7 +179,7 @@ public class Menu {
 
 
     // Effects: checks if string given can be converted to integer.
-    public static boolean isNumeric(String strNum) {
+    private static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
         }
@@ -190,5 +191,19 @@ public class Menu {
         return true;
     }
 
+    // Effects: prints banner
+    private void printBanner() {
+        List<String> output = new ArrayList<>();
+        output.add("oooooooooo.                      oooo             ooooo ooooooooooooo .o. ");
+        output.add("`888'   `Y8b                     `888             `888' 8'   888   `8 888");
+        output.add(" 888     888  .ooooo.   .ooooo.   888  oooo        888       888      888 ");
+        output.add(" 888oooo888' d88' `88b d88' `88b  888 .8P'         888       888      Y8P ");
+        output.add(" 888    `88b 888   888 888   888  888888.          888       888      `8'");
+        output.add(" 888    .88P 888   888 888   888  888 `88b.        888       888      .o. ");
+        output.add("o888bood8P'  `Y8bod8P' `Y8bod8P' o888o o888o      o888o     o888o     Y8P ");
+        for (String s : output) {
+            System.out.println(s);
+        }
+    }
 
 }
