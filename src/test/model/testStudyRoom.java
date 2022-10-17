@@ -13,7 +13,7 @@ public class testStudyRoom {
 
     @BeforeEach
     public void setup() {
-        room = new StudyRoom("Room");
+        room = new StudyRoom();
     }
 
     // test empty schedule case

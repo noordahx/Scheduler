@@ -24,8 +24,8 @@ public class Menu {
     // Effects: instantiates list of StudyRoom objects and calls startApp() method
     public Menu() {
         this.studyRoomList = new ArrayList<>();
-        for (String room : ROOMS) {
-            studyRoomList.add(new StudyRoom(room));
+        for (int i = 0; i < ROOMS.length; i++) {
+            studyRoomList.add(new StudyRoom());
         }
         startApp();
     }
@@ -154,9 +154,9 @@ public class Menu {
             String input = in.nextLine();
             if (input.equals("q")) {
                 return -1;
-            } else if (!(!isNumeric(input) || Integer.valueOf(input) < 1
-                    || Integer.valueOf(input) > ROOMS.length)) {
-                return Integer.valueOf(input);
+            } else if (!(!isNumeric(input) || Integer.parseInt(input) < 1
+                    || Integer.parseInt(input) > ROOMS.length)) {
+                return Integer.parseInt(input);
             }
         } while (true);
     }
@@ -169,9 +169,9 @@ public class Menu {
             String input = in.nextLine();
             if (input.equals("q")) {
                 return -1;
-            } else if (!(!isNumeric(input) || Integer.valueOf(input) < 9
-                    || Integer.valueOf(input) > 17)) {
-                return Integer.valueOf(input);
+            } else if (!(!isNumeric(input) || Integer.parseInt(input) < 9
+                    || Integer.parseInt(input) > 17)) {
+                return Integer.parseInt(input);
             }
         } while (true);
     }

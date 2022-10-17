@@ -5,13 +5,11 @@ import java.util.List;
 
 // class that holds data about the study room
 public class StudyRoom {
-    private String name;
-    private List<TimeSlot> allTimeSlots;
+    private final List<TimeSlot> allTimeSlots;
 
     // Modifies: this
     // Effects: instantiates list of timeslot objects and changes a name string.
-    public StudyRoom(String name) {
-        this.name = name;
+    public StudyRoom() {
         allTimeSlots = new ArrayList<>();
         for (int i = 9; i < 18; i++) {
             allTimeSlots.add(new TimeSlot());
@@ -22,7 +20,6 @@ public class StudyRoom {
     public List<String> getSchedule() {
         List<String> output = new ArrayList<>();
         for (int i = 9; i < 18; i++) {
-            String status;
             if (allTimeSlots.get(i - 9).getStatus()) {
                 output.add("Free");
             } else {
