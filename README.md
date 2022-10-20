@@ -15,6 +15,10 @@
 * As a *user*, I want to be able to *add* my own booking study place to one of the available timeslots. 
 * As a *user*, I want to be able to *reschedule* the booking at the specified time.
 * As a *user*, I want to be able to *delete* the booking. 
+
+## Notes from TA:
+* Some methods should inherit clauses
+
 <!-- A subtitle
 
 A *bulleted* list:
