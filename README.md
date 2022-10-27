@@ -15,7 +15,10 @@
 * As a *user*, I want to be able to *add* my own booking study place to one of the available timeslots. 
 * As a *user*, I want to be able to *reschedule* the booking at the specified time.
 * As a *user*, I want to be able to *delete* the booking. 
-
+<!--* As a *user*, I want to be able to save my Schedule to file
+* As a *user*, I want to be able to lead my Schedule from file --> 
+* As a *user*, I want my program to automatically save Schedule when I close the program
+* As a *user*, I want my program to automatically load Schedule when I open the program
 ## Notes from TA:
 * Some methods should inherit clauses
 
