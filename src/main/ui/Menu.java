@@ -30,7 +30,8 @@ public class Menu {
         startApp();
     }
 
-
+    // Requires: console input integer between 1 - 4 or q
+    // Modifies: this
     // Effects: prints out menu options and redirects to suitable method based on user input
     private void startApp() {
         printBanner();
@@ -56,6 +57,7 @@ public class Menu {
         }
     }
 
+    // Modifies: this
     // Effects: lets user choose room and prints out study room availability
     private void showSchedule() {
         int room = chooseRoom();
@@ -70,8 +72,9 @@ public class Menu {
     }
 
 
-
-    // Effects: lets user choose a room and timeslot and reserves a room if possible
+    // Requires: console input integer between 9 - 17 and chosen timeslot is Free
+    // Modifies: this
+    // Effects: lets user choose a room and timeslot1 and reserves a room if possible
     private void bookStudyRoom() {
         int room = chooseRoom();
         if (room != -1) {
@@ -90,7 +93,8 @@ public class Menu {
     }
 
 
-
+    // Requires: console input integer between 9 - 17 and booking to be deleted exists
+    // Modifies: this
     // Effects: lets user choose a room and timeslot and deletes that timeslot
     private void deleteBooking() {
         int room = chooseRoom();
@@ -107,7 +111,8 @@ public class Menu {
             }
         }
     }
-
+    // Requires: console input integer between 9 - 17 and existing old Booking
+    // Modifies: this
     // Effects: lets user choose a room, old and new timeslot to change the booking
     private void alterBooking() {
         int room = chooseRoom();
@@ -144,7 +149,7 @@ public class Menu {
         System.out.println("4 >> Alter Booking");
     }
 
-
+    // Requires: console input integer between 1 - 4
     // Effects: lets user choose a room and returns room id.
     private int chooseRoom() {
         do {
@@ -162,7 +167,7 @@ public class Menu {
         } while (true);
     }
 
-
+    // Requires: console input integer between 9 - 17
     // Effects: lets user choose a timeslot and returns timeslot number.
     private int chooseTimeSlot() {
         System.out.println("Choose a Slot from 9 to 17 or type [q] to quit:");
