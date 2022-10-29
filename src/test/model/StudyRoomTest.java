@@ -13,7 +13,7 @@ public class StudyRoomTest {
 
     @BeforeEach
     public void setup() {
-        room = new StudyRoom();
+        room = new StudyRoom("Test Room");
     }
 
     // test empty schedule case
@@ -60,4 +60,18 @@ public class StudyRoomTest {
 
     }
 
+    // test getName method
+    @Test
+    public void testGetName() {
+        assertEquals("Test Room", room.getName());
+    }
+
+    // test changeTimeSlot method
+    @Test
+    public void testChangeTimeSlot() {
+        TimeSlot ts = new TimeSlot();
+        room.changeTimeSlot(0,ts);
+        room.changeTimeSlot(1, ts);
+        assertEquals(room.getTimeSlot(0), ts);
+    }
 }

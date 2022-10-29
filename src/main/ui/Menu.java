@@ -1,7 +1,13 @@
 package ui;
 
+import model.ListRooms;
 import model.StudyRoom;
+//import persistence.JsonReader;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,24 +22,33 @@ public class Menu {
             "X300",
             "X400"
     };
+    private static final String JSON_STORE = "./data/workroom.json";
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
 
-    private final List<StudyRoom> studyRoomList;
+    private ListRooms allRoomList;
     private final Scanner in = new Scanner(System.in);
 
     // Modifies: this
     // Effects: instantiates list of StudyRoom objects and calls startApp() method
     public Menu() {
-        this.studyRoomList = new ArrayList<>();
-        for (int i = 0; i < ROOMS.length; i++) {
-            studyRoomList.add(new StudyRoom());
+        this.allRoomList = new ListRooms();
+
+        for (String room : ROOMS) {
+            allRoomList.add(new StudyRoom(room));
         }
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         startApp();
     }
+
+
 
     // Requires: console input integer between 1 - 4 or q
     // Modifies: this
     // Effects: prints out menu options and redirects to suitable method based on user input
     private void startApp() {
+        loadData();
         printBanner();
         while (true) {
             printMenu();
@@ -52,8 +67,34 @@ public class Menu {
                     alterBooking();
                     continue;
                 case "q":
+                    saveData();
                     return;
             }
+        }
+    }
+
+    // Taken from the project JsonSerializationDemo
+
+    // EFFECTS: saves ListRoom to file JSON_STORE
+    private void saveData() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(allRoomList);
+            jsonWriter.close();
+            System.out.println("Saved data to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads ListRoom from file JSON_STORE
+    private void loadData() {
+        try {
+            allRoomList = jsonReader.read();
+            System.out.println("Loaded Data" + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 
@@ -62,7 +103,7 @@ public class Menu {
     private void showSchedule() {
         int room = chooseRoom();
         if (room != -1) {
-            List<String> schedule = studyRoomList.get(room - 1).getSchedule();
+            List<String> schedule = allRoomList.get(room - 1).getSchedule();
             for (int i = 9; i < 18; i++) {
                 System.out.printf("%02d:00 - %02d:00 | %s \n",
                         i, i + 1, schedule.get(i - 9));
@@ -80,13 +121,14 @@ public class Menu {
         if (room != -1) {
             int timeSlot = chooseTimeSlot();
             if (timeSlot != -1) {
-                if (!studyRoomList.get(room - 1).getAvailability(timeSlot)) {
+                if (!allRoomList.get(room - 1).getAvailability(timeSlot)) {
                     System.out.println("Timeslot is already booked, choose different one!");
                 } else {
                     System.out.println("Type your name:");
                     String name = in.nextLine();
-                    studyRoomList.get(room - 1).bookTimeSlot(timeSlot, name);
+                    allRoomList.get(room - 1).bookTimeSlot(timeSlot, name);
                     System.out.println("Study room is successfully booked!");
+                    saveData();
                 }
             }
         }
@@ -99,25 +141,27 @@ public class Menu {
     private void deleteBooking() {
         int room = chooseRoom();
         if (room != -1) {
-            List<String> schedule = studyRoomList.get(room - 1).getSchedule();
+            List<String> schedule = allRoomList.get(room - 1).getSchedule();
             for (int i = 9; i < 18; i++) {
                 System.out.printf("%02d:00 - %02d:00 | %s \n",
                         i, i + 1, schedule.get(i - 9));
             }
             int timeSlot = chooseTimeSlot();
             if (timeSlot != -1) {
-                studyRoomList.get(room - 1).deleteTimeSlot(timeSlot);
+                allRoomList.get(room - 1).deleteTimeSlot(timeSlot);
                 System.out.println("Timeslot is successfully deleted!");
+                saveData();
             }
         }
     }
+
     // Requires: console input integer between 9 - 17 and existing old Booking
     // Modifies: this
     // Effects: lets user choose a room, old and new timeslot to change the booking
     private void alterBooking() {
         int room = chooseRoom();
         if (room != -1) {
-            List<String> schedule = studyRoomList.get(room - 1).getSchedule();
+            List<String> schedule = allRoomList.get(room - 1).getSchedule();
             for (int i = 9; i < 18; i++) {
                 System.out.printf("%02d:00 - %02d:00 | %s \n",
                         i, i + 1, schedule.get(i - 9));
@@ -127,15 +171,16 @@ public class Menu {
             int oldTimeSlot = chooseTimeSlot();
             String oldName = "";
             if (oldTimeSlot != -1) {
-                oldName = studyRoomList.get(room - 1).getTimeSlotUser(oldTimeSlot);
-                studyRoomList.get(room - 1).deleteTimeSlot(oldTimeSlot);
+                oldName = allRoomList.get(room - 1).getTimeSlotUser(oldTimeSlot);
+                allRoomList.get(room - 1).deleteTimeSlot(oldTimeSlot);
             }
 
             System.out.println("New Booking");
             int newTimeSlot = chooseTimeSlot();
             if (newTimeSlot != -1) {
-                studyRoomList.get(room - 1).bookTimeSlot(newTimeSlot, oldName);
+                allRoomList.get(room - 1).bookTimeSlot(newTimeSlot, oldName);
                 System.out.println("Timeslot is successfully changed");
+                saveData();
             }
         }
     }
@@ -147,6 +192,7 @@ public class Menu {
         System.out.println("2 >> Book a Study Room");
         System.out.println("3 >> Delete Booking");
         System.out.println("4 >> Alter Booking");
+        System.out.println("q >> Quit app");
     }
 
     // Requires: console input integer between 1 - 4

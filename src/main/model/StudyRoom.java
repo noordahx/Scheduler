@@ -1,16 +1,22 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // class that holds data about the study room
-public class StudyRoom {
+public class StudyRoom implements Writable {
     private final List<TimeSlot> allTimeSlots;
+    private final String roomName;
 
     // Modifies: this
     // Effects: instantiates list of timeslot objects and changes a name string.
-    public StudyRoom() {
-        allTimeSlots = new ArrayList<>();
+    public StudyRoom(String name) {
+        this.allTimeSlots = new ArrayList<>();
+        this.roomName = name;
         for (int i = 9; i < 18; i++) {
             allTimeSlots.add(new TimeSlot());
         }
@@ -40,6 +46,20 @@ public class StudyRoom {
     // Requires: 9 <= time <= 17
     // Modifies: this
     // Effects: given a time, changes the status of the timeslot to FREE.
+    public TimeSlot getTimeSlot(int i) {
+        return allTimeSlots.get(i);
+    }
+
+    // Requires: 0 <= i <= allTimeSlots.size()
+    // Modifies: this
+    // Effects: given an index, adds new TimeSlot to TimeSLot array.
+    public void changeTimeSlot(int i, TimeSlot ts) {
+        allTimeSlots.add(i, ts);
+    }
+
+    // Requires: 9 <= time <= 17
+    // Modifies: this
+    // Effects: given a time, changes the status of the timeslot to FREE.
     public void deleteTimeSlot(int time) {
         TimeSlot current = allTimeSlots.get(time - 9);
         current.delete();
@@ -58,5 +78,34 @@ public class StudyRoom {
         TimeSlot current = allTimeSlots.get(time - 9);
         return current.getStatus();
     }
+
+    // Effects: returns name of the room
+    public String getName() {
+        return this.roomName;
+    }
+
+
+    // Taken from the project JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", this.roomName);
+        json.put("TimeSlots", timeSlotToJson());
+        return json;
+    }
+
+
+    // Taken from the project JsonSerializationDemo
+    // Effects: returns each timeslot contents a jsonArray.
+    private JSONArray timeSlotToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (TimeSlot slot: allTimeSlots) {
+            jsonArray.put(slot.toJson());
+        }
+
+        return jsonArray;
+    }
+
 
 }

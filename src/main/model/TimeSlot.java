@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // class that holds data about each timeslot.
-public class TimeSlot {
+public class TimeSlot implements Writable {
     private String userName;
     private boolean status;
 
@@ -10,6 +13,11 @@ public class TimeSlot {
     public TimeSlot() {
         this.userName = "";
         this.status = true;
+    }
+
+    public TimeSlot(String username, boolean status) {
+        this.userName = username;
+        this.status = status;
     }
 
     // Effects: returns a status of the timeslot.
@@ -34,5 +42,15 @@ public class TimeSlot {
     // Effects: returns a userName of the person who booked this timeslot.
     public String getUserName() {
         return userName;
+    }
+
+    // Citation: taken from JsonSerializationDemo app.
+    // Effects: saves local variable as a JSONObject and returns JSONObject.
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("Username", userName);
+        json.put("status", status);
+        return json;
     }
 }
