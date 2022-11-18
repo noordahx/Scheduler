@@ -44,37 +44,34 @@ public class Menu {
 
 
 
-    // Requires: console input integer between 1 - 4 or q
+    // Requires: console input integer between 1 - 5 or q
     // Modifies: this
     // Effects: prints out menu options and redirects to suitable method based on user input
     private void startApp() {
-        loadData();
         printBanner();
         while (true) {
             printMenu();
             String userInput = in.nextLine();
             switch (userInput) {
-                case "1":
-                    showSchedule();
+                case "1": showSchedule();
                     continue;
-                case "2":
-                    bookStudyRoom();
+                case "2": bookStudyRoom();
                     continue;
-                case "3":
-                    deleteBooking();
+                case "3": deleteBooking();
                     continue;
-                case "4":
-                    alterBooking();
+                case "4": alterBooking();
                     continue;
-                case "q":
-                    saveData();
+                case "5": saveData();
+                    continue;
+                case "6": loadData();
+                    continue;
+                case "q": saveData();
                     return;
             }
         }
     }
 
     // Taken from the project JsonSerializationDemo
-
     // EFFECTS: saves ListRoom to file JSON_STORE
     private void saveData() {
         try {
@@ -192,6 +189,8 @@ public class Menu {
         System.out.println("2 >> Book a Study Room");
         System.out.println("3 >> Delete Booking");
         System.out.println("4 >> Alter Booking");
+        System.out.println("5 >> Save Data");
+        System.out.println("6 >> Load Data");
         System.out.println("q >> Quit app");
     }
 
