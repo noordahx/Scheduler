@@ -1,6 +1,6 @@
 package persistence;
 
-import model.ListRooms;
+import persistence.model.ListRooms;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -17,6 +17,11 @@ public class JsonWriter {
     // EFFECTS: constructs writer to write to destination file
     public JsonWriter(String destination) {
         this.destination = destination;
+    }
+
+    public JsonWriter(File file) {
+        this.destination =
+                (file.getAbsolutePath().contains(".json")) ? file.getAbsolutePath() : file.getAbsolutePath() + ".json";
     }
 
     // MODIFIES: this
@@ -42,6 +47,7 @@ public class JsonWriter {
     // MODIFIES: this
     // EFFECTS: writes string to file
     private void saveToFile(String json) {
+        writer.flush();
         writer.print(json);
     }
 }

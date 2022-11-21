@@ -2,6 +2,8 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import persistence.model.ListRooms;
+import persistence.model.StudyRoom;
 
 import java.util.ArrayList;
 import java.util.List;

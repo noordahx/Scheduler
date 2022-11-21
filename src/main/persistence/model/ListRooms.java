@@ -1,4 +1,4 @@
-package model;
+package persistence.model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -10,10 +10,23 @@ import java.util.List;
 // Class with the list of existing rooms
 public class ListRooms implements Writable {
     private final List<StudyRoom> allRoomList;
+    public static final String[] ROOMS = {
+            "X100",
+            "X200",
+            "X300",
+            "X400"
+    };
 
     // Modifies: this
     // Effects: creates linked list of StudyRooms class
     public ListRooms() {
+        allRoomList = new ArrayList<>();
+        for (String room : ROOMS) {
+            allRoomList.add(new StudyRoom(room));
+        }
+    }
+
+    public ListRooms(String text) {
         allRoomList = new ArrayList<>();
     }
 

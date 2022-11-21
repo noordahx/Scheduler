@@ -4,8 +4,8 @@
             "name": "X100",
             "TimeSlots": [
                 {
-                    "Username": "Nurda",
-                    "status": false
+                    "Username": "",
+                    "status": true
                 },
                 {
                     "Username": "",
@@ -77,8 +77,8 @@
                     "status": true
                 },
                 {
-                    "Username": "Nurda",
-                    "status": false
+                    "Username": "",
+                    "status": true
                 }
             ]
         },

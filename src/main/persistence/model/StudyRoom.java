@@ -1,4 +1,4 @@
-package model;
+package persistence.model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

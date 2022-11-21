@@ -1,8 +1,8 @@
 package persistence;
 
 
-import model.ListRooms;
-import model.StudyRoom;
+import persistence.model.ListRooms;
+import persistence.model.StudyRoom;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

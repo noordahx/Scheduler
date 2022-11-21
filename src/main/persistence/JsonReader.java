@@ -1,14 +1,15 @@
 package persistence;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-import model.ListRooms;
-import model.StudyRoom;
-import model.TimeSlot;
+import persistence.model.ListRooms;
+import persistence.model.StudyRoom;
+import persistence.model.TimeSlot;
 import org.json.*;
 
 // Taken from the project JsonSerializationDemo
@@ -20,6 +21,12 @@ public class JsonReader {
     public JsonReader(String source) {
         this.source = source;
     }
+
+    // EFFECTS: constructs reader to read from source file
+    public JsonReader(File file) {
+        this.source = file.getAbsolutePath();
+    }
+
 
     // EFFECTS: reads ListRooms from file and returns it;
     // throws IOException if an error occurs reading data from file
@@ -40,9 +47,10 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
+
     // EFFECTS: parses workroom from JSON object and returns it
     private ListRooms parseStudyRooms(JSONObject jsonObject) {
-        ListRooms lr = new ListRooms();
+        ListRooms lr = new ListRooms("from Reader");
         addRooms(lr, jsonObject);
         return lr;
     }
@@ -50,8 +58,8 @@ public class JsonReader {
     // MODIFIES: lr
     // EFFECTS: parses StudyRooms from JSON object and adds them to ListRooms
     private void addRooms(ListRooms lr, JSONObject jsonObject) {
-        String name = jsonObject.getString("name");
         JSONArray jsonArray = jsonObject.getJSONArray("data");
+        // String name = jsonObject.getString("name");
         int i = 0;
         for (Object json : jsonArray) {
             JSONObject nextRoom = (JSONObject) json;
@@ -75,7 +83,7 @@ public class JsonReader {
     }
 
     // MODIFIES: lr
-    // Effects: parses TimeSlots's from JSON object and adds it to StudyRooms
+    // Effects: parses TimeSlot's from JSON object and adds it to StudyRooms
     private void addTimeSlot(StudyRoom sr, int i, JSONObject jsonObject) {
         String username = jsonObject.getString("Username");
         boolean status = jsonObject.getBoolean("status");

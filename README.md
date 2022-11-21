@@ -17,9 +17,13 @@
 * As a *user*, I want to be able to *delete* the booking. 
 * As a *user*, I want my program to automatically save Schedule when I close the program
 * As a *user*, I want my program to automatically load Schedule when I open the program
-## Notes from TA:
-* Some methods should inherit clauses
 
+## Instructions for Grader
+* You can book an event by adding new Booking Timeslot to a Room Time table
+* You can delete an event by clicking delete button in Delete menu
+* You can locate my visual component in Main menu
+* You can save the state of my application by navigating to the menu and clicking File > Load 
+* You can save the state of my application by exiting the application and save prompt will be shown
 <!-- A subtitle
 
 A *bulleted* list:
