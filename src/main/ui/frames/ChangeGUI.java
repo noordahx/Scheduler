@@ -13,17 +13,23 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+// class that helps user to change booking time
 public class ChangeGUI extends JFrame implements ActionListener {
     private ListRooms allRoomsList;
     private JFrame changeFrame;
     private List<String> schedule;
     private List<String> optionsList = new ArrayList<>();
 
+    // Requires: allRoomsList != null
+    // Modifies: this
+    // Effects: copies passed parameter to local variable and creates UI
     public ChangeGUI(ListRooms allRoomsList) {
         this.allRoomsList = allRoomsList;
         createUI();
     }
 
+    // Modifies: this
+    // Effects: creates new frame and adds UI components
     private void createUI() {
         changeFrame = new JFrame("Change Reservation");
         addComponentsToPane(changeFrame.getContentPane());
@@ -40,6 +46,8 @@ public class ChangeGUI extends JFrame implements ActionListener {
         changeFrame.setVisible(true);
     }
 
+    // Modifies: this
+    // Effects: adds multiple button components to the frame
     private void addComponentsToPane(Container pane) {
         JPanel btnPanel = new JPanel();
         btnPanel.setLayout(new GridLayout(4,1,5,5));
@@ -48,12 +56,16 @@ public class ChangeGUI extends JFrame implements ActionListener {
         pane.add(btnPanel, BorderLayout.CENTER);
     }
 
+    // Modifies: this
+    // Effects: creates multiple buttons and adds them to passed parameter list
     private void addActionButtons(JPanel btnPanel) {
         for (StudyRoom sr : allRoomsList.getRooms()) {
             addButton(btnPanel, sr.getName(), sr.getName());
         }
     }
 
+    // Modifies: this
+    // Effects: adds a single button
     private void addButton(JPanel btnPanel, String text, String actionCommand) {
         JButton button = new JButton(text);
         button.setPreferredSize(new Dimension(200,75));
@@ -63,6 +75,8 @@ public class ChangeGUI extends JFrame implements ActionListener {
         btnPanel.add(button);
     }
 
+    // Modifies: this
+    // Effects: when button is clicked, opens the required srFrame
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         int i;
@@ -75,6 +89,7 @@ public class ChangeGUI extends JFrame implements ActionListener {
         changeFrame.setVisible(false);
     }
 
+    // Effects: creates new popup frame that lists studyrooms
     private JFrame studyRoomFrame(String roomName, int index) {
         JFrame srFrame = new JFrame(roomName);
         srFrame.addWindowListener(new WindowAdapter() {
@@ -96,6 +111,8 @@ public class ChangeGUI extends JFrame implements ActionListener {
         return srFrame;
     }
 
+    // Modifies: this (schedulePanel)
+    // Effects: adds required buttons to passed parameter schedule panel
     private void addSlotButtons(JPanel schedulePanel, int index) {
         schedule = allRoomsList.get(index).getSchedule();
         for (int i = 9; i < 18; i++) {
@@ -117,6 +134,8 @@ public class ChangeGUI extends JFrame implements ActionListener {
         }
     }
 
+
+    // Effects: creates and returns new popup frame that will ask user's confirmation
     private JFrame popUp(int time, int roomIndex) {
         JFrame popUpFrame = new JFrame("Registration Prompt");
         JPanel panel = new JPanel(new GridLayout(3, 1, 5, 5));
@@ -130,6 +149,8 @@ public class ChangeGUI extends JFrame implements ActionListener {
         return popUpFrame;
     }
 
+    // Modifies: (popUpFrame, panel) this
+    // Effects: adds UI elements to pupUpFrame and panel
     private void addPopUpItems(JFrame popUpFrame, Container panel, int time, int roomIndex) {
         for (int i = 0; i < schedule.size(); i++) {
             if (schedule.get(i).equals("Free")) {
