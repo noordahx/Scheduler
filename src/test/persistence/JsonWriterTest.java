@@ -25,7 +25,25 @@ class JsonWriterTest  {
             writer.write(lr);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroomFile.json");
+            lr = reader.read();
+            assertEquals(4, lr.numRooms());
+        } catch (IOException e) {
+            fail("Exception should not have been thrown");
+        }
+    }
+
+    @Test
+    void testWriterEmptyListroomElse() {
+        try {
+            File myFile = new File("./data/testWriterEmptyWorkroomFile2");
+            ListRooms lr = new ListRooms();
+            JsonWriter writer = new JsonWriter(myFile);
+            writer.open();
+            writer.write(lr);
+            writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroomFile2.json");
             lr = reader.read();
             assertEquals(4, lr.numRooms());
         } catch (IOException e) {
