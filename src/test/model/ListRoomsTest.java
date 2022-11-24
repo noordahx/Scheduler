@@ -24,7 +24,7 @@ public class ListRoomsTest {
     @Test
     public void addTest() {
         lr.add(sr);
-        assertEquals(sr, lr.get(0));
+        assertEquals(sr, lr.get(4));
     }
 
     // test listRooms size method
@@ -32,7 +32,7 @@ public class ListRoomsTest {
     public void numRoomsTest() {
         lr.add(sr);
         lr.add(sr);
-        assertEquals(2, lr.numRooms());
+        assertEquals(6, lr.numRooms());
     }
     // test getRooms method
     @Test
@@ -42,8 +42,8 @@ public class ListRoomsTest {
         List<StudyRoom> studyRooms = new ArrayList<>();
         studyRooms.add(sr);
         studyRooms.add(sr);
-        assertEquals(studyRooms.size(), lr.getRooms().size());
-        assertEquals(studyRooms.get(0).getName(), lr.getRooms().get(0).getName());
+        assertEquals(studyRooms.size()+4, lr.getRooms().size());
+        assertEquals(studyRooms.get(0).getName(), lr.getRooms().get(4).getName());
     }
 
 

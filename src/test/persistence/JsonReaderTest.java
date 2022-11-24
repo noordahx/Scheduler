@@ -5,6 +5,7 @@ import persistence.model.ListRooms;
 import persistence.model.StudyRoom;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -32,7 +33,16 @@ class JsonReaderTest  {
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
+
+        JsonReader readerFile = new JsonReader(new File("./data/testReaderEmptyWorkroom.json"));
+        try {
+            ListRooms lr = reader.read();
+            assertEquals(0, lr.numRooms());
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
     }
+
 
     @Test
     void testReaderGeneralWorkRoom() {
