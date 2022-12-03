@@ -82,6 +82,8 @@ Saved X400 as JSON
 Fri Dec 02 20:01:24 PST 2022
 Saving List Rooms object in Json format ...
 ```
+
+The first ~20 lines of eventlog are related to initialization of the program where 1 ListRooms class initializes and adds 4 different rooms (X100 - X400). For each room, StudyRoom class initializes and adds 9 TimeSlot objects to its timeslots ArrayList.
 </details>
 
 ### Phase 4: Task 3
