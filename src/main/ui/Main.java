@@ -1,4 +1,5 @@
 package ui;
+
 import model.Event;
 import model.EventLog;
 
