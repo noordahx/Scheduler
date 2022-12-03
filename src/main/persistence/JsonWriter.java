@@ -1,6 +1,6 @@
 package persistence;
 
-import persistence.model.ListRooms;
+import model.ListRooms;
 import org.json.JSONObject;
 
 import java.io.File;

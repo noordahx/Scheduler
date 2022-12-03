@@ -1,4 +1,4 @@
-package persistence.model;
+package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,9 +17,11 @@ public class StudyRoom implements Writable {
     public StudyRoom(String name) {
         this.allTimeSlots = new ArrayList<>();
         this.roomName = name;
+        EventLog.getInstance().logEvent(new Event(String.format("Created new StudyRoom class with the name %s", name)));
         for (int i = 9; i < 18; i++) {
             allTimeSlots.add(new TimeSlot());
         }
+        EventLog.getInstance().logEvent(new Event(String.format("Added timeslots to %s", name)));
     }
 
     // Effects: returns schedule of the current room in a form of list of strings.
@@ -41,6 +43,7 @@ public class StudyRoom implements Writable {
     public void bookTimeSlot(int time, String name) {
         TimeSlot current = allTimeSlots.get(time - 9);
         current.book(name);
+        EventLog.getInstance().logEvent(new Event(String.format("Booked a timeslot for %s at %d", name, time)));
     }
 
     // Requires: 9 <= time <= 17
@@ -55,6 +58,7 @@ public class StudyRoom implements Writable {
     // Effects: given an index, adds new TimeSlot to TimeSLot array.
     public void changeTimeSlot(int i, TimeSlot ts) {
         allTimeSlots.add(i, ts);
+        EventLog.getInstance().logEvent(new Event(String.format("Changed timeslot number %d", i)));
     }
 
     // Requires: 9 <= time <= 17
@@ -63,6 +67,7 @@ public class StudyRoom implements Writable {
     public void deleteTimeSlot(int time) {
         TimeSlot current = allTimeSlots.get(time - 9);
         current.delete();
+        EventLog.getInstance().logEvent(new Event(String.format("Deleted timeslot at %d", time)));
     }
 
     // Requires: 9 <= time <= 17

@@ -1,4 +1,4 @@
-package persistence.model;
+package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,6 +24,7 @@ public class ListRooms implements Writable {
         for (String room : ROOMS) {
             allRoomList.add(new StudyRoom(room));
         }
+        EventLog.getInstance().logEvent(new Event("Created new ListRooms object"));
     }
 
     public ListRooms(String text) {
@@ -35,6 +36,7 @@ public class ListRooms implements Writable {
     // Effects: adds new room to existing List of rooms
     public void add(StudyRoom newRoom) {
         allRoomList.add(newRoom);
+        EventLog.getInstance().logEvent(new Event(String.format("Added new Study Room named: %s", newRoom.getName())));
     }
 
     // Effects: returns StudyRoom at index i
@@ -61,6 +63,7 @@ public class ListRooms implements Writable {
         JSONObject json = new JSONObject();
         json.put("name", "ListRooms");
         json.put("data", roomsToJson());
+        EventLog.getInstance().logEvent(new Event("Saving List Rooms object in Json format ..."));
         return json;
     }
 
@@ -70,6 +73,7 @@ public class ListRooms implements Writable {
 
         for (StudyRoom t : allRoomList) {
             jsonArray.put(t.toJson());
+            EventLog.getInstance().logEvent(new Event(String.format("Saved %s as JSON", t.getName())));
         }
 
         return jsonArray;

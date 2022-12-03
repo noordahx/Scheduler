@@ -7,9 +7,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-import persistence.model.ListRooms;
-import persistence.model.StudyRoom;
-import persistence.model.TimeSlot;
+import model.ListRooms;
+import model.StudyRoom;
+import model.TimeSlot;
 import org.json.*;
 
 // Taken from the project JsonSerializationDemo

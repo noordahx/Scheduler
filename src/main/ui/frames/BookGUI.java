@@ -1,7 +1,7 @@
 package ui.frames;
 
-import persistence.model.ListRooms;
-import persistence.model.StudyRoom;
+import model.ListRooms;
+import model.StudyRoom;
 import ui.MainGUI;
 
 import javax.swing.*;

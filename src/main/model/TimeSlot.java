@@ -1,4 +1,4 @@
-package persistence.model;
+package model;
 
 import org.json.JSONObject;
 import persistence.Writable;
@@ -30,6 +30,7 @@ public class TimeSlot implements Writable {
     public void book(String name) {
         this.status = false;
         this.userName = name;
+        EventLog.getInstance().logEvent(new Event("Timeslot successfully added!"));
     }
 
     // Modifies: this
@@ -37,6 +38,7 @@ public class TimeSlot implements Writable {
     public void delete() {
         this.userName = "";
         this.status = true;
+        EventLog.getInstance().logEvent(new Event("Deleted an old booking"));
     }
 
     // Effects: returns a userName of the person who booked this timeslot.

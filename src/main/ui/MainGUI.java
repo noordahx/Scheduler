@@ -2,7 +2,7 @@ package ui;
 
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import persistence.model.ListRooms;
+import model.ListRooms;
 import ui.frames.*;
 
 import javax.swing.*;
@@ -12,9 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
 
 // class that creates main menu GUI
 public class MainGUI extends JFrame implements ActionListener {

@@ -1,7 +1,7 @@
 package ui;
 
-import persistence.model.ListRooms;
-import persistence.model.StudyRoom;
+import model.ListRooms;
+import model.StudyRoom;
 //import persistence.JsonReader;
 import persistence.JsonReader;
 import persistence.JsonWriter;
