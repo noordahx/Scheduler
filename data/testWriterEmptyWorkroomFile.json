@@ -1,0 +1,169 @@
+{
+    "data": [
+        {
+            "name": "X100",
+            "TimeSlots": [
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                }
+            ]
+        },
+        {
+            "name": "X200",
+            "TimeSlots": [
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                }
+            ]
+        },
+        {
+            "name": "X300",
+            "TimeSlots": [
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                }
+            ]
+        },
+        {
+            "name": "X400",
+            "TimeSlots": [
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                }
+            ]
+        }
+    ],
+    "name": "ListRooms"
+}
