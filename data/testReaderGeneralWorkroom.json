@@ -1,0 +1,87 @@
+{
+    "data": [
+        {
+            "name": "x100",
+            "TimeSlots": [
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                }
+            ]
+        },
+        {
+            "name": "x200",
+            "TimeSlots": [
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                },
+                {
+                    "Username": "",
+                    "status": true
+                }
+            ]
+        }
+    ],
+    "name": "ListRooms"
+}
